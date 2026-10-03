@@ -1,4 +1,4 @@
-import profileImage from "../../assets/images/profile.jpeg";
+import profileImage from "../../assets/images/profile-cutout.png";
 const socialLinks = [
   {
     name: "GitHub",
@@ -32,67 +32,42 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden pt-32 pb-24 md:pt-40 md:pb-32"
+      className="relative isolate overflow-hidden pt-28 pb-20 md:pt-36 md:pb-28"
     >
-      {/* Background */}
-      <div className="bg-grid pointer-events-none absolute inset-0" />
+      <div aria-hidden="true" className="hero-grid pointer-events-none absolute inset-0" />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute right-0 top-0 h-56 w-1/3 border-b border-l border-primary/10"
+      />
 
-      <div className="relative mx-auto grid max-w-6xl items-center gap-16 px-5 md:grid-cols-[1.25fr_1fr]">
-
-        {/* Left */}
-        <div className="order-2 md:order-1">
-
-          <p className="animate-fade-in font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground">
-            <span className="text-primary">●</span>{" "}
+      <div className="relative mx-auto grid max-w-6xl items-center gap-16 px-5 md:grid-cols-[1.1fr_0.9fr] lg:gap-20">
+        <div className="order-1 max-w-2xl">
+          <p className="hero-enter inline-flex items-center gap-3 rounded-full border border-primary/20 bg-white/80 px-4 py-2 font-mono text-xs uppercase tracking-[0.2em] text-neutral-600 shadow-sm backdrop-blur dark:bg-neutral-900/80 dark:text-neutral-300">
+            <span className="h-2 w-2 rounded-full bg-primary ring-4 ring-primary/15" />
             Hello, I'm Deeya Pandey
           </p>
 
-          <h1
-            className="animate-fade-in mt-5 text-4xl font-semibold leading-[1.08] tracking-tight md:text-6xl"
-            style={{
-              animationDelay: "80ms",
-              animationFillMode: "both",
-            }}
-          >
-             .NET Developer building{" "}
-            <span className="text-primary">practical</span>{" "}
-            web applications.
+          <h1 className="hero-enter-delay-1 mt-7 text-4xl font-semibold leading-[1.04] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
+            <span className="block">.NET Developer building</span>
+            <span className="block">
+              <span className="text-primary">practical</span> web applications.
+            </span>
           </h1>
 
-          <p className="mt-5 text-lg md:text-xl">
-            <span className="font-mono text-muted-foreground">
-              &gt;{" "}
-            </span>
-
-            <span className="font-mono text-primary">
-              .NET
-            </span>
+          <p className="hero-enter-delay-2 mt-6 font-mono text-lg text-primary md:text-xl">
+            <span className="mr-2 text-muted-foreground">&gt;</span>.NET
           </p>
 
-          <p
-            className="animate-fade-in mt-6 max-w-xl leading-relaxed text-muted-foreground"
-            style={{
-              animationDelay: "160ms",
-              animationFillMode: "both",
-            }}
-          >
+          <p className="hero-enter-delay-2 mt-5 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
             I'm a Junior .NET Developer from Nepal with hands-on
             experience building and maintaining web applications using
-            .NET, React, Next.js, and SQL Server. I'm currently expanding
-            my skills in Linux and DevOps.
+            .NET, React, Next.js, and SQL Server.
           </p>
 
-          {/* Buttons */}
-          <div
-            className="animate-fade-in mt-9 flex flex-wrap gap-3"
-            style={{
-              animationDelay: "240ms",
-              animationFillMode: "both",
-            }}
-          >
+          <div className="hero-enter-delay-3 mt-8 flex flex-wrap gap-3">
             <a
               href="#projects"
-              className="group inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-medium text-primary-foreground transition hover:-translate-y-0.5 hover:shadow-glow"
+              className="group inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-medium text-white shadow-lg shadow-primary/20 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/30"
             >
               View My Work
 
@@ -115,21 +90,20 @@ export default function Hero() {
 
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 rounded-lg border border-border px-5 py-3 text-sm font-medium transition hover:-translate-y-0.5 hover:border-primary hover:text-primary"
+              className="inline-flex items-center gap-2 rounded-lg border border-neutral-300 bg-white/70 px-5 py-3 text-sm font-medium transition duration-300 hover:-translate-y-1 hover:border-primary hover:text-primary dark:border-neutral-700 dark:bg-neutral-900/70"
             >
               Let's Connect
             </a>
           </div>
 
-          {/* Social Links */}
-          <div className="mt-8 flex items-center gap-5 font-mono text-sm text-muted-foreground">
+          <div className="hero-enter-delay-3 mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-neutral-200/80 pt-5 font-mono text-sm text-muted-foreground dark:border-neutral-800">
             {socialLinks.map((social) => (
               <a
                 key={social.name}
                 href={social.url}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 hover:text-primary"
+                className="inline-flex items-center gap-2 transition-colors hover:text-primary"
               >
                 {social.icon}
                 {social.name}
@@ -138,72 +112,13 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right */}
-        <div className="order-1 mx-auto md:order-2">
-          <div className="animate-scale-in relative h-64 w-64 md:h-80 md:w-80">
-
-            {/* Glow */}
-            <div className="animate-glow absolute -inset-6 rounded-full bg-primary/20 blur-3xl" />
-
-            {/* Profile Card */}
-            <div className="relative h-full w-full rounded-[2rem] border border-primary/40 bg-card p-2 shadow-glow">
-              <div className="grid h-full w-full place-items-center rounded-[1.6rem] bg-secondary">
-                <div className="text-center">
-                <img
-                src={profileImage}
-                alt="Deeya Pandey"
-                className="h-32 w-32 rounded-full object-cover"
-                />
-                  {/* <span className="font-mono text-6xl font-semibold text-primary md:text-7xl">
-                    DP
-                  </span>
-
-                  <p className="mt-2 font-mono text-xs text-muted-foreground">
-                    photo coming soon
-                  </p> */}
-                </div>
-              </div>
-            </div>
-
-            {/* Floating Technology Tags */}
-            <span className="animate-float absolute -left-4 top-6 rounded-md border border-border bg-card px-2.5 py-1 font-mono text-xs shadow-sm">
-              <span className="text-primary">&lt;Deeya /&gt;</span>
-            </span>
-
-            <span
-              className="animate-float absolute -right-2 top-14 rounded-md border border-border bg-card px-2.5 py-1 font-mono text-xs shadow-sm"
-              style={{ animationDelay: "1s" }}
-            >
-              .NET
-            </span>
-
-            <span
-              className="animate-float absolute -left-8 bottom-24 rounded-md border border-border bg-card px-2.5 py-1 font-mono text-xs shadow-sm"
-              style={{ animationDelay: "2s" }}
-            >
-              React
-            </span>
-
-            <span
-              className="animate-float absolute right-[-1.5rem] bottom-28 rounded-md border border-border bg-card px-2.5 py-1 font-mono text-xs shadow-sm"
-              style={{ animationDelay: "0.5s" }}
-            >
-              Next.js
-            </span>
-
-            <span
-              className="animate-float absolute left-8 -bottom-3 rounded-md border border-border bg-card px-2.5 py-1 font-mono text-xs shadow-sm"
-              style={{ animationDelay: "1.5s" }}
-            >
-              SQL
-            </span>
-
-            <span
-              className="animate-float absolute right-10 -bottom-4 rounded-md border border-border bg-card px-2.5 py-1 font-mono text-xs shadow-sm"
-              style={{ animationDelay: "2.5s" }}
-            >
-              Linux
-            </span>
+        <div className="hero-enter-delay-2 order-2 mx-auto w-full max-w-[20rem] sm:max-w-[22rem] md:max-w-[23rem] lg:max-w-[24rem]">
+          <div className="group relative aspect-[4/5] overflow-hidden rounded-2xl border border-primary/20 bg-secondary/70 p-2 shadow-[0_18px_50px_rgba(20,83,45,0.12)]">
+            <img
+              src={profileImage}
+              alt="Deeya Pandey"
+              className="h-full w-full object-contain object-bottom transition-transform duration-500 group-hover:scale-[1.02]"
+            />
           </div>
         </div>
       </div>

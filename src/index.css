@@ -1,7 +1,40 @@
 @import "tailwindcss";
-@theme {
-  --color-primary: #39b54a;
-  --color-primary-dark: #2d963b;
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-primary: #287a52;
+  --color-primary-dark: #1c623f;
+  --color-primary-foreground: var(--site-primary-foreground);
+  --color-background: var(--site-background);
+  --color-foreground: var(--site-foreground);
+  --color-card: var(--site-card);
+  --color-secondary: var(--site-secondary);
+  --color-muted-foreground: var(--site-muted-foreground);
+  --color-border: var(--site-border);
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", "DM Sans", sans-serif;
+}
+
+:root {
+  color-scheme: light;
+  --site-background: #f7faf7;
+  --site-foreground: #17211a;
+  --site-card: #ffffff;
+  --site-secondary: #eaf2eb;
+  --site-muted-foreground: #5c6a60;
+  --site-border: #d9e3da;
+  --site-primary-foreground: #ffffff;
+}
+
+.dark {
+  color-scheme: dark;
+  --site-background: #0b100d;
+  --site-foreground: #edf4ee;
+  --site-card: #121a14;
+  --site-secondary: #1d2a20;
+  --site-muted-foreground: #a4b2a7;
+  --site-border: #2d3b31;
+  --site-primary-foreground: #ffffff;
 }
 
 
@@ -11,4 +44,17 @@ html {
 
 body {
   margin: 0;
+  font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  background-color: var(--site-background);
+  color: var(--site-foreground);
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Space Grotesk", "DM Sans", sans-serif;
 }
