@@ -1,40 +1,63 @@
+import SectionHeading from "../shared/SectionHeading";
+import Reveal from "../shared/Reveal";
+import Button from "../shared/Button";
+import SocialLinks from "../shared/SocialLinks";
+
 export default function Contact() {
   return (
     <section
       id="contact"
-      className="border-y border-border/70 bg-secondary/20 px-5 py-24"
+      className="border-y border-border/70 bg-secondary/30 px-5 py-24"
     >
       <div className="mx-auto max-w-6xl">
-        <p className="font-mono text-sm text-primary">05. CONTACT</p>
+        <SectionHeading index="05" eyebrow="CONTACT" title="Let's Connect" />
 
-        <div className="mt-8 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+        <Reveal className="mt-12 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div>
-            <h2 className="text-3xl font-semibold md:text-5xl">
-              Let's Connect
-            </h2>
-
-            <p className="mt-5 max-w-xl leading-relaxed text-muted-foreground">
-              I'm open to discussing development opportunities,
-              interesting projects and opportunities to grow as a
-              software engineer.
+            <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">
+              I&rsquo;m open to discussing development opportunities,
+              interesting projects and opportunities to grow as a software
+              engineer.
             </p>
 
-            <a
-              href="/Deeya_Resume.pdf"
-              download
-              className="mt-8 inline-flex rounded-lg border border-primary/50 px-5 py-3 font-medium text-primary transition hover:-translate-y-0.5 hover:bg-primary hover:text-primary-foreground hover:shadow-glow"
-            >
-              Download Resume
-            </a>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button href="mailto:deeyapandey123@gmail.com" variant="primary">
+                Say Hello
+              </Button>
+
+              <Button
+                href="/Deeya_Resume.pdf"
+                download
+                variant="ghost"
+                className="group"
+              >
+                Download Resume
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-4 w-4 transition-transform group-hover:translate-y-0.5"
+                >
+                  <path d="M12 3v12m0 0 4-4m-4 4-4-4" />
+                  <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" />
+                </svg>
+              </Button>
+            </div>
+
+            <SocialLinks className="mt-8 border-t border-border pt-6" />
           </div>
 
-          <div className="group relative overflow-hidden rounded-2xl border border-primary/30 bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/60 hover:shadow-glow md:p-8">
+          <div className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-glow md:p-8">
             <span
               aria-hidden="true"
               className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary via-sky-400 to-amber-300"
             />
 
-            <div className="flex items-center justify-between gap-4">
+            <div className="flex flex-wrap items-center justify-between gap-3">
               <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
                 Direct Email
               </p>
@@ -73,7 +96,7 @@ export default function Contact() {
               </div>
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

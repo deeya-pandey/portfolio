@@ -1,47 +1,94 @@
+import SectionHeading from "../shared/SectionHeading";
+import Reveal from "../shared/Reveal";
+
+const exploring = ["Linux", "Docker", "Azure", "Terraform", "DevOps"];
+
 export default function About() {
   return (
     <section id="about" className="px-5 py-24">
       <div className="mx-auto max-w-6xl">
-        <p className="font-mono text-sm text-primary">01. ABOUT</p>
+        <SectionHeading index="01" eyebrow="ABOUT" title="About Me" />
 
-        <h2 className="group/title relative mt-3 inline-block text-3xl font-semibold md:text-4xl">
-          About Me
-          <span className="absolute -bottom-2 left-0 h-0.5 w-10 bg-primary transition-all duration-300 group-hover/title:w-full" />
-        </h2>
-
-        <div className="mt-8 max-w-4xl space-y-5 rounded-xl border border-primary/25 bg-card/30 p-6 transition-all duration-300 hover:border-primary/40 hover:shadow-glow md:p-8">
-          <p className="text-lg leading-relaxed text-foreground md:text-xl">
-            Hi, I’m Deeya — a software developer from Nepal who enjoys turning ideas into practical, reliable software.
+        <Reveal className="mt-10">
+          <p className="max-w-3xl text-xl font-medium leading-relaxed text-foreground md:text-2xl">
+            Hi, I&rsquo;m Deeya &mdash; a software developer from Nepal who
+            enjoys turning ideas into practical, reliable software.
           </p>
 
-          <p className="leading-relaxed text-muted-foreground transition-colors duration-300 hover:text-foreground">
-            I started my journey in software development with .NET and have worked on real-world applications using C#, ASP.NET Core, SQL, Next.js, and REST APIs. In my current work, I’ve been involved in building and improving a Learning Management System, where I work on backend development, application features, bug fixes, and collaborating with a team to deliver things that actually get used.
-          </p>
+          <div className="mt-10 grid gap-8 lg:grid-cols-[1.35fr_0.65fr] lg:gap-12">
+            <div className="space-y-5 leading-relaxed text-muted-foreground">
+              <p>
+                I started my journey in software development with .NET and have
+                worked on real-world applications using C#, ASP.NET Core, SQL,
+                Next.js, and REST APIs. In my current work, I&rsquo;ve been
+                involved in building and improving a Learning Management System,
+                where I work on backend development, application features, bug
+                fixes, and collaborating with a team to deliver things that
+                actually get used.
+              </p>
 
-          <p className="leading-relaxed text-muted-foreground transition-colors duration-300 hover:text-foreground">
-            Over time, I became increasingly interested in what happens beyond writing code — how applications are deployed, how servers work, how containers are managed, and how development teams can automate the journey from code to production.
-          </p>
+              <p>
+                Over time, I became increasingly interested in what happens
+                beyond writing code &mdash; how applications are deployed, how
+                servers work, how containers are managed, and how development
+                teams can automate the journey from code to production.
+              </p>
 
-          <p className="leading-relaxed text-muted-foreground transition-colors duration-300 hover:text-foreground">
-            That curiosity led me toward Linux, Docker, Azure, Terraform, and DevOps.
-          </p>
+              <p>
+                Right now, I&rsquo;m focused on strengthening my foundations in
+                cloud and infrastructure while continuing to grow as a software
+                engineer. I enjoy learning by building things, breaking them,
+                figuring out why they broke, and then making them work better.
+              </p>
 
-          <p className="leading-relaxed text-muted-foreground transition-colors duration-300 hover:text-foreground">
-            Right now, I’m focused on strengthening my foundations in cloud and infrastructure while continuing to grow as a software engineer. I enjoy learning by building things, breaking them, figuring out why they broke, and then making them work better.
-          </p>
+              <p>
+                I&rsquo;m still learning, and that&rsquo;s something I genuinely
+                enjoy. When I&rsquo;m not coding, you&rsquo;ll usually find me
+                learning something new, experimenting with a project, or
+                documenting what I&rsquo;ve learned along the way.
+              </p>
 
-          <p className="leading-relaxed text-muted-foreground transition-colors duration-300 hover:text-foreground">
-            I’m still learning, and that’s something I genuinely enjoy. My goal is to become an engineer who understands not just how to build an application, but also how to deploy it, operate it, automate it, and keep it reliable.
-          </p>
+              <p className="border-l-2 border-primary pl-5 font-display text-lg font-medium text-foreground">
+                One step, one project, one problem at a time.
+              </p>
+            </div>
 
-          <p className="leading-relaxed text-muted-foreground transition-colors duration-300 hover:text-foreground">
-            When I’m not coding, you’ll usually find me learning something new, experimenting with a project, or documenting what I’ve learned along the way.
-          </p>
+            <aside className="space-y-4">
+              <div className="rounded-xl border border-border bg-card p-6 transition-colors duration-300 hover:border-primary/40">
+                <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+                  Currently exploring
+                </p>
 
-          <p className="border-t border-primary/20 pt-4 font-medium leading-relaxed text-foreground">
-            One step, one project, one problem at a time.
-          </p>
-        </div>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  That curiosity led me toward:
+                </p>
+
+                <ul className="mt-4 flex flex-wrap gap-2">
+                  {exploring.map((item) => (
+                    <li
+                      key={item}
+                      className="rounded-md border border-primary/30 bg-primary/10 px-2.5 py-1.5 font-mono text-xs text-primary"
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="rounded-xl border border-primary/30 bg-primary/5 p-6">
+                <p className="font-mono text-xs uppercase tracking-widest text-primary">
+                  The goal
+                </p>
+
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  To become an engineer who understands not just how to build an
+                  application, but also how to deploy it, operate it, automate
+                  it, and keep it reliable.
+                </p>
+              </div>
+            </aside>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
