@@ -9,7 +9,7 @@ export default function SectionHeading({ index, eyebrow, title, description }) {
         {title}
         <span
           aria-hidden="true"
-          className="absolute -bottom-2 left-0 h-0.5 w-10 bg-primary transition-all duration-300 group-hover/title:w-full"
+          className="bg-aurora absolute -bottom-2 left-0 h-1 w-12 rounded-full transition-all duration-500 group-hover/title:w-full"
         />
       </h2>
 

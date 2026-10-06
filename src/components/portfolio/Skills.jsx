@@ -1,5 +1,6 @@
 import SectionHeading from "../shared/SectionHeading";
 import Reveal from "../shared/Reveal";
+import { trackPointer } from "../shared/pointer";
 
 const skillGroups = [
   {
@@ -68,7 +69,8 @@ export default function Skills() {
                 as="article"
                 key={group.category}
                 delay={index * 80}
-                className="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-card p-5 transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-glow"
+                onPointerMove={trackPointer}
+                className="spotlight group relative flex flex-col overflow-hidden rounded-xl border border-border bg-card p-5 transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-glow"
               >
                 <span
                   aria-hidden="true"

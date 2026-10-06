@@ -20,6 +20,7 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [hasScrolled, setHasScrolled] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", isDark);
@@ -48,7 +49,12 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    const onScroll = () => setHasScrolled(window.scrollY > 8);
+    const onScroll = () => {
+      const scrollable =
+        document.documentElement.scrollHeight - window.innerHeight;
+      setHasScrolled(window.scrollY > 8);
+      setProgress(scrollable > 0 ? window.scrollY / scrollable : 0);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -80,6 +86,12 @@ export default function Navbar() {
           : "border-b border-transparent bg-background/40 backdrop-blur-sm"
       }`}
     >
+      <span
+        aria-hidden="true"
+        className="bg-aurora absolute bottom-0 left-0 h-0.5 origin-left"
+        style={{ width: "100%", transform: `scaleX(${progress})` }}
+      />
+
       <nav
         aria-label="Primary"
         className="mx-auto flex h-[var(--header-height)] max-w-6xl items-center justify-between px-5"

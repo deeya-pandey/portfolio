@@ -1,7 +1,8 @@
 import SectionHeading from "../shared/SectionHeading";
 import Reveal from "../shared/Reveal";
+import { trackPointer } from "../shared/pointer";
 
-const exploring = ["Linux", "Docker", "Azure", "Terraform", "DevOps"];
+const exploring = ["Linux", "Docker", "Azure", "DevOps"];
 
 export default function About() {
   return (
@@ -48,13 +49,16 @@ export default function About() {
                 documenting what I&rsquo;ve learned along the way.
               </p>
 
-              <p className="border-l-2 border-primary pl-5 font-display text-lg font-medium text-foreground">
-                One step, one project, one problem at a time.
+              <p className="border-l-2 border-accent pl-5 font-display text-lg font-medium">
+                <span className="text-gradient">One step, one project, one problem at a time.</span>
               </p>
             </div>
 
             <aside className="space-y-4">
-              <div className="rounded-xl border border-border bg-card p-6 transition-colors duration-300 hover:border-primary/40">
+              <div
+                onPointerMove={trackPointer}
+                className="spotlight rounded-xl border border-border bg-card p-6 transition-colors duration-300 hover:border-primary/40"
+              >
                 <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
                   Currently exploring
                 </p>
@@ -75,8 +79,11 @@ export default function About() {
                 </ul>
               </div>
 
-              <div className="rounded-xl border border-primary/30 bg-primary/5 p-6">
-                <p className="font-mono text-xs uppercase tracking-widest text-primary">
+              <div
+                onPointerMove={trackPointer}
+                className="spotlight relative overflow-hidden rounded-xl border border-accent/30 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 p-6"
+              >
+                <p className="font-mono text-xs uppercase tracking-widest text-accent">
                   The goal
                 </p>
 

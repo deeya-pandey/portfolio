@@ -2,6 +2,7 @@ import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 
 import Hero from "../components/portfolio/Hero";
+import TechMarquee from "../components/portfolio/TechMarquee";
 import About from "../components/portfolio/About";
 import Skills from "../components/portfolio/Skills";
 import Experience from "../components/portfolio/Experience";
@@ -22,6 +23,7 @@ export default function Home() {
 
       <main id="main">
         <Hero />
+        <TechMarquee />
         <About />
         <Skills />
         <Experience />

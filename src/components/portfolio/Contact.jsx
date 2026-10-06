@@ -1,5 +1,6 @@
 import SectionHeading from "../shared/SectionHeading";
 import Reveal from "../shared/Reveal";
+import { trackPointer } from "../shared/pointer";
 import Button from "../shared/Button";
 import SocialLinks from "../shared/SocialLinks";
 
@@ -7,8 +8,16 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="border-y border-border/70 bg-secondary/30 px-5 py-24"
+      className="relative isolate overflow-hidden border-y border-border/70 bg-secondary/30 px-5 py-24"
     >
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
+        <div className="aurora-blob -right-20 top-10 h-80 w-80 bg-[var(--site-blob-2)]" />
+        <div
+          className="aurora-blob -left-24 bottom-0 h-72 w-72 bg-[var(--site-blob-1)]"
+          style={{ animationDelay: "-9s" }}
+        />
+      </div>
+
       <div className="mx-auto max-w-6xl">
         <SectionHeading index="05" eyebrow="CONTACT" title="Let's Connect" />
 
@@ -51,10 +60,12 @@ export default function Contact() {
             <SocialLinks className="mt-8 border-t border-border pt-6" />
           </div>
 
-          <div className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-glow md:p-8">
+          <div
+            onPointerMove={trackPointer}
+            className="spotlight group relative overflow-hidden rounded-2xl border border-border bg-card p-6 transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-glow md:p-8">
             <span
               aria-hidden="true"
-              className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary via-sky-400 to-amber-300"
+              className="bg-aurora absolute inset-x-0 top-0 h-1"
             />
 
             <div className="flex flex-wrap items-center justify-between gap-3">

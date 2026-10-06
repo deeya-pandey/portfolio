@@ -1,5 +1,6 @@
 import SectionHeading from "../shared/SectionHeading";
 import Reveal from "../shared/Reveal";
+import { trackPointer } from "../shared/pointer";
 
 const roles = [
   {
@@ -29,14 +30,16 @@ export default function Experience() {
             <Reveal as="li" key={`${role.title}-${role.company}`} className="relative pl-8 md:pl-10">
               <span
                 aria-hidden="true"
-                className="absolute left-0 top-0 h-full w-px bg-border"
+                className="absolute left-0 top-0 h-full w-px bg-gradient-to-b from-primary via-accent-2/60 to-transparent"
               />
               <span
                 aria-hidden="true"
                 className="absolute -left-[5px] top-7 h-[11px] w-[11px] rounded-full border-2 border-background bg-primary ring-4 ring-primary/15"
               />
 
-              <article className="rounded-xl border border-border bg-card p-6 transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-glow md:p-8">
+              <article
+                onPointerMove={trackPointer}
+                className="spotlight rounded-xl border border-border bg-card p-6 transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-glow md:p-8">
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div>
                     <h3 className="text-xl font-semibold">{role.title}</h3>
