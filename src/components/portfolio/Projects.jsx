@@ -6,6 +6,7 @@ import jamyoImage from "../../assets/images/projects/jamyo.jpg";
 import studentRegistrationImage from "../../assets/images/projects/student-registration.jpg";
 import fixitupDashboardImage from "../../assets/images/projects/ondemand1.png";
 import fixitupSignInImage from "../../assets/images/projects/ondemand2.jpeg";
+import e2eimage from "../../assets/images/projects/e2e.jpg";
 
 // To show a screenshot for a project, drop the image in
 // src/assets/images/projects/, import it above and set `image`.
@@ -18,6 +19,8 @@ const projects = [
     technologies: [".NET", "Next.js", "SQL Server"],
     type: "Professional Work",
     url: "e2edemo.solveetech.com",
+    image: e2eimage,
+    imageAlt: "E2E learning management system dashboard",
   },
   {
     title: "Interactive Grand Opening Landing Page",
