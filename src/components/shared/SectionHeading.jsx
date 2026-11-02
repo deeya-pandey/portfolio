@@ -1,20 +1,18 @@
 export default function SectionHeading({ index, eyebrow, title, description }) {
   return (
     <header className="max-w-3xl">
-      <p className="font-mono text-sm tracking-widest text-primary">
-        <span className="text-muted-foreground">{index}.</span> {eyebrow}
+      <p className="eyebrow">
+        <span className="text-muted-foreground">{index}.</span>
+        <span aria-hidden="true" className="h-px w-6 bg-primary/50" />
+        {eyebrow}
       </p>
 
-      <h2 className="group/title relative mt-3 inline-block text-3xl font-semibold tracking-tight md:text-4xl">
+      <h2 className="mt-4 text-[2rem] font-semibold leading-[1.1] tracking-[-0.025em] sm:text-[2.5rem] lg:text-[2.75rem]">
         {title}
-        <span
-          aria-hidden="true"
-          className="bg-aurora absolute -bottom-2 left-0 h-1 w-12 rounded-full transition-all duration-500 group-hover/title:w-full"
-        />
       </h2>
 
       {description ? (
-        <p className="mt-7 leading-relaxed text-muted-foreground">
+        <p className="mt-5 max-w-2xl text-[1.0625rem] leading-relaxed text-muted-foreground">
           {description}
         </p>
       ) : null}

@@ -74,36 +74,14 @@ const projects = [
 
 const filters = ["All", "Professional Work", "Academic Work", "Personal Work"];
 
-const technologyStyles = {
-  ".NET":
-    "border-violet-500/30 bg-violet-500/10 text-violet-800 dark:text-violet-300",
-  "Next.js":
-    "border-slate-500/30 bg-slate-500/10 text-slate-800 dark:text-slate-300",
-  "SQL Server":
-    "border-rose-500/30 bg-rose-500/10 text-rose-800 dark:text-rose-300",
-  React: "border-sky-500/30 bg-sky-500/10 text-sky-800 dark:text-sky-300",
-  CSS: "border-amber-500/30 bg-amber-500/10 text-amber-800 dark:text-amber-300",
-  "React Native":
-    "border-sky-500/30 bg-sky-500/10 text-sky-800 dark:text-sky-300",
-  "Express.js":
-    "border-slate-500/30 bg-slate-500/10 text-slate-800 dark:text-slate-300",
-  PostgreSQL:
-    "border-blue-500/30 bg-blue-500/10 text-blue-800 dark:text-blue-300",
-  Prisma:
-    "border-teal-500/30 bg-teal-500/10 text-teal-800 dark:text-teal-300",
-};
-
-const fallbackTechnologyStyle =
-  "border-border bg-secondary text-muted-foreground";
-
 function BrowserFrame({ url, children }) {
   return (
-    <div className="overflow-hidden rounded-xl border border-border bg-card shadow-xl shadow-black/5">
-      <div className="flex items-center gap-2 border-b border-border bg-secondary/60 px-4 py-2.5">
-        <span className="h-2.5 w-2.5 rounded-full bg-rose-400" />
-        <span className="h-2.5 w-2.5 rounded-full bg-amber-400" />
-        <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
-        <span className="ml-3 flex-1 truncate rounded-md bg-background/80 px-3 py-1 font-mono text-[11px] text-muted-foreground">
+    <div className="overflow-hidden rounded-xl border border-border bg-card shadow-glow transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:-translate-y-1">
+      <div className="flex items-center gap-1.5 border-b border-border bg-secondary/70 px-3.5 py-2.5">
+        <span className="h-2.5 w-2.5 rounded-full bg-border-strong" />
+        <span className="h-2.5 w-2.5 rounded-full bg-border-strong" />
+        <span className="h-2.5 w-2.5 rounded-full bg-border-strong" />
+        <span className="ml-3 flex-1 truncate rounded-md border border-border bg-card px-3 py-1 font-mono text-[11px] text-muted-foreground">
           https://{url}
         </span>
       </div>
@@ -124,7 +102,7 @@ function DashboardPlaceholder() {
       className="absolute inset-0 flex gap-3 bg-gradient-to-br from-secondary via-card to-secondary p-4 transition-transform duration-700 group-hover:scale-[1.03]"
     >
       <div className="hidden w-1/5 flex-col gap-2 rounded-lg bg-card/80 p-3 shadow-sm sm:flex">
-        <span className="bg-aurora mb-2 h-3 w-3/4 rounded" />
+        <span className="mb-2 h-3 w-3/4 rounded bg-primary/70" />
         {[0, 1, 2, 3, 4].map((row) => (
           <span
             key={row}
@@ -135,7 +113,7 @@ function DashboardPlaceholder() {
 
       <div className="flex flex-1 flex-col gap-3">
         <div className="grid grid-cols-3 gap-3">
-          {["bg-primary/70", "bg-accent/60", "bg-accent-2/60"].map((tone) => (
+          {["bg-primary/70", "bg-primary/45", "bg-primary/25"].map((tone) => (
             <div key={tone} className="rounded-lg bg-card/80 p-3 shadow-sm">
               <span className="block h-1.5 w-1/2 rounded bg-border" />
               <span className={`mt-2 block h-3 w-3/4 rounded ${tone}`} />
@@ -147,7 +125,7 @@ function DashboardPlaceholder() {
           {bars.map((height, index) => (
             <span
               key={index}
-              className="bg-aurora flex-1 origin-bottom rounded-t opacity-80 transition-transform duration-500 group-hover:scale-y-110"
+              className="flex-1 origin-bottom rounded-t bg-primary/60 transition-transform duration-500 group-hover:scale-y-110"
               style={{ height: `${height}%`, transitionDelay: `${index * 40}ms` }}
             />
           ))}
@@ -178,8 +156,8 @@ const expandIcon = (
 
 function HoverLabel({ children }) {
   return (
-    <span className="absolute inset-0 flex items-end justify-center bg-gradient-to-t from-black/55 via-transparent to-transparent pb-5 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
-      <span className="inline-flex translate-y-2 items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-medium text-slate-900 shadow-lg transition-transform duration-300 group-hover:translate-y-0">
+    <span className="absolute inset-0 flex items-end justify-center bg-gradient-to-t from-black/45 via-transparent to-transparent pb-5 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
+      <span className="inline-flex translate-y-2 items-center gap-2 rounded-full bg-white/95 px-4 py-2 text-[13px] font-medium text-slate-900 shadow-lg backdrop-blur transition-transform duration-300 ease-[var(--ease-out-expo)] group-hover:translate-y-0">
         {expandIcon}
         {children}
       </span>
@@ -195,17 +173,22 @@ function PhoneScreens({ screens }) {
   ];
 
   return (
-    <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-border bg-gradient-to-br from-primary/15 via-secondary to-accent/15 shadow-xl shadow-black/5">
+    <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-border bg-secondary shadow-glow">
       <div
         aria-hidden="true"
-        className="aurora-blob left-1/4 top-1/4 h-40 w-40 bg-[var(--site-blob-2)]"
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(70% 60% at 50% 100%, var(--site-halo), transparent 70%)",
+        }}
       />
+      <div aria-hidden="true" className="dot-grid absolute inset-0" />
 
       <div className="absolute inset-0 flex items-center justify-center gap-5 sm:gap-8">
         {screens.map((screen, index) => (
           <div
             key={screen.src}
-            className={`h-[84%] overflow-hidden rounded-[1.4rem] border-[5px] border-neutral-900 bg-neutral-900 shadow-2xl transition-transform duration-500 group-hover:-translate-y-2 ${tilts[index % 2]}`}
+            className={`h-[84%] overflow-hidden rounded-[1.4rem] border-[5px] border-neutral-900 bg-neutral-900 shadow-2xl transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:-translate-y-2 ${tilts[index % 2]}`}
             style={{ aspectRatio: "258 / 560" }}
           >
             <img
@@ -285,22 +268,22 @@ function Lightbox({ project, onClose }) {
         if (event.target === event.currentTarget) dialogRef.current.close();
       }}
       aria-label={`${project.title} screenshot`}
-      className="fade-in m-auto max-h-[92vh] w-[min(64rem,calc(100vw-2rem))] overflow-hidden rounded-2xl border border-border bg-card p-0 text-foreground shadow-2xl backdrop:bg-black/70 backdrop:backdrop-blur-sm"
+      className="fade-in m-auto max-h-[92vh] w-[min(64rem,calc(100vw-2rem))] overflow-hidden rounded-2xl border border-border bg-card p-0 text-foreground shadow-2xl backdrop:bg-black/65 backdrop:backdrop-blur-sm"
     >
       <div className="pop-in flex max-h-[92vh] flex-col">
         <div className="flex items-center justify-between gap-4 border-b border-border px-5 py-3">
           <div className="min-w-0">
-            <p className="font-mono text-[11px] uppercase tracking-widest text-primary">
-              {project.type}
+            <p className="eyebrow text-[11px]">{project.type}</p>
+            <p className="mt-0.5 truncate font-display font-semibold tracking-[-0.01em]">
+              {project.title}
             </p>
-            <p className="truncate font-display font-semibold">{project.title}</p>
           </div>
           <button
             type="button"
             onClick={() => dialogRef.current.close()}
             aria-label="Close preview"
             autoFocus
-            className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-border transition hover:border-primary hover:text-primary"
+            className="icon-button shrink-0"
           >
             <svg
               aria-hidden="true"
@@ -345,15 +328,15 @@ export default function Projects() {
   );
 
   return (
-    <section id="projects" className="px-5 py-24">
-      <div className="mx-auto max-w-6xl">
+    <section id="projects" className="section-block section-divider">
+      <div className="container-page">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionHeading index="04" eyebrow="PROJECTS" title="Selected Work" />
 
           <div
             role="group"
             aria-label="Filter projects"
-            className="flex max-w-full flex-wrap rounded-xl border border-border bg-card p-1"
+            className="flex w-full gap-0.5 overflow-x-auto rounded-xl border border-border bg-secondary/70 p-1 [scrollbar-width:none] sm:w-auto"
           >
             {filters.map((filter) => {
               const count =
@@ -368,21 +351,27 @@ export default function Projects() {
                   type="button"
                   aria-pressed={isActive}
                   onClick={() => setActiveFilter(filter)}
-                  className={`rounded-lg px-2.5 py-2 font-mono text-xs transition-all duration-300 sm:px-4 ${
+                  className={`shrink-0 whitespace-nowrap rounded-lg px-3 py-1.5 text-[13px] font-medium transition-[background-color,color,box-shadow] duration-200 sm:px-3.5 ${
                     isActive
-                      ? "bg-primary text-primary-foreground shadow-md shadow-primary/20"
-                      : "text-muted-foreground hover:text-primary"
+                      ? "bg-card text-foreground shadow-soft ring-1 ring-border"
+                      : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   {filter.replace(" Work", "")}
-                  <span className="ml-1.5 opacity-70">{count}</span>
+                  <span
+                    className={`ml-1.5 font-mono text-[11px] ${
+                      isActive ? "text-primary" : "opacity-60"
+                    }`}
+                  >
+                    {count}
+                  </span>
                 </button>
               );
             })}
           </div>
         </div>
 
-        <div className="mt-14 space-y-10">
+        <div className="mt-10 space-y-6 md:mt-12 md:space-y-8">
           {visibleProjects.map((project, index) => {
             const number = projects.indexOf(project) + 1;
             const isFlipped = index % 2 === 1;
@@ -393,38 +382,38 @@ export default function Projects() {
                 key={project.title}
                 delay={index * 80}
                 onPointerMove={trackPointer}
-                className="spotlight group/card overflow-hidden rounded-3xl border border-border bg-card/70 p-5 transition-[border-color,box-shadow] duration-300 hover:border-primary/40 hover:shadow-glow md:p-8"
+                className="spotlight card group/card overflow-hidden rounded-2xl p-4 hover:border-border-strong hover:shadow-glow sm:p-6 lg:p-8"
               >
-                <div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
+                <div className="grid gap-7 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:gap-12">
                   <div className={isFlipped ? "lg:order-2" : undefined}>
                     <ProjectPreview project={project} onOpen={setOpenProject} />
                   </div>
 
-                  <div>
+                  <div className="px-1 pb-1 sm:px-0 sm:pb-0">
                     <div className="flex items-center justify-between gap-4">
-                      <p className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-primary">
-                        <span className="bg-aurora h-px w-6" />
+                      <p className="eyebrow">
+                        <span aria-hidden="true" className="h-px w-5 bg-primary/50" />
                         {project.type}
                       </p>
                       <span
                         aria-hidden="true"
-                        className="select-none font-display text-4xl font-bold leading-none text-border transition-colors duration-300 group-hover/card:text-primary/40"
+                        className="select-none font-mono text-xs text-muted-foreground transition-colors duration-300 group-hover/card:text-primary"
                       >
                         {String(number).padStart(2, "0")}
                       </span>
                     </div>
 
-                    <h3 className="mt-4 text-2xl font-semibold leading-tight md:text-3xl">
+                    <h3 className="mt-4 text-[1.5rem] font-semibold leading-[1.2] tracking-[-0.02em] md:text-[1.75rem]">
                       {project.title}
                     </h3>
 
-                    <p className="mt-4 leading-relaxed text-muted-foreground">
+                    <p className="mt-4 text-[0.9875rem] leading-[1.7] text-muted-foreground md:text-base">
                       {project.description}
                     </p>
 
                     {project.contributions ? (
-                      <div className="mt-5">
-                        <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+                      <div className="mt-6">
+                        <p className="eyebrow text-[11px] text-muted-foreground">
                           My contributions
                         </p>
                         <ul className="mt-3 space-y-2">
@@ -435,7 +424,7 @@ export default function Projects() {
                             >
                               <span
                                 aria-hidden="true"
-                                className="bg-aurora mt-[0.55rem] h-1.5 w-1.5 shrink-0 rounded-full"
+                                className="mt-[0.6rem] h-1 w-1 shrink-0 rounded-full bg-primary"
                               />
                               {item}
                             </li>
@@ -446,25 +435,19 @@ export default function Projects() {
 
                     <ul className="mt-6 flex flex-wrap gap-2" aria-label="Technology stack">
                       {project.technologies.map((technology) => (
-                        <li
-                          key={technology}
-                          className={`rounded-md border px-3 py-1.5 font-mono text-xs transition-transform duration-200 hover:-translate-y-0.5 ${
-                            technologyStyles[technology] ??
-                            fallbackTechnologyStyle
-                          }`}
-                        >
+                        <li key={technology} className="chip">
                           {technology}
                         </li>
                       ))}
                     </ul>
 
                     {project.github || project.image || project.screens ? (
-                      <div className="mt-7 flex flex-wrap items-center gap-5 border-t border-border pt-5">
+                      <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-border pt-5">
                         {project.image || project.screens ? (
                           <button
                             type="button"
                             onClick={() => setOpenProject(project)}
-                            className="inline-flex items-center gap-2 font-mono text-sm text-foreground transition-colors hover:text-primary"
+                            className="group/link inline-flex items-center gap-2 text-sm font-medium text-foreground transition-colors duration-200 hover:text-primary"
                           >
                             <svg
                               aria-hidden="true"
@@ -480,7 +463,7 @@ export default function Projects() {
                               <circle cx="9" cy="9" r="2" />
                               <path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21" />
                             </svg>
-                            Preview
+                            <span className="link-underline pb-px">Preview</span>
                           </button>
                         ) : null}
 
@@ -489,9 +472,9 @@ export default function Projects() {
                             href={project.github}
                             target="_blank"
                             rel="noreferrer"
-                            className="group/link inline-flex items-center gap-2 font-mono text-sm text-foreground transition-colors hover:text-primary"
+                            className="group/link inline-flex items-center gap-2 text-sm font-medium text-foreground transition-colors duration-200 hover:text-primary"
                           >
-                            Source code
+                            <span className="link-underline pb-px">Source code</span>
                             <svg
                               aria-hidden="true"
                               viewBox="0 0 24 24"

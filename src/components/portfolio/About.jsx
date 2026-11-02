@@ -6,18 +6,18 @@ const exploring = ["Linux", "Docker", "Azure", "DevOps"];
 
 export default function About() {
   return (
-    <section id="about" className="px-5 py-24">
-      <div className="mx-auto max-w-6xl">
+    <section id="about" className="section-block">
+      <div className="container-page">
         <SectionHeading index="01" eyebrow="ABOUT" title="About Me" />
 
-        <Reveal className="mt-10">
-          <p className="max-w-3xl text-xl font-medium leading-relaxed text-foreground md:text-2xl">
+        <Reveal className="mt-10 md:mt-12">
+          <p className="max-w-3xl text-[1.375rem] font-medium leading-[1.4] tracking-[-0.015em] text-foreground md:text-[1.75rem]">
             Hi, I&rsquo;m Deeya &mdash; a software developer from Nepal who
             enjoys turning ideas into practical, reliable software.
           </p>
 
-          <div className="mt-10 grid gap-8 lg:grid-cols-[1.35fr_0.65fr] lg:gap-12">
-            <div className="space-y-5 leading-relaxed text-muted-foreground">
+          <div className="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-16 xl:grid-cols-[minmax(0,1fr)_22rem]">
+            <div className="max-w-[42rem] space-y-5 text-[1.0625rem] leading-[1.75] text-muted-foreground">
               <p>
                 I started my journey in software development with .NET and have
                 worked on real-world applications using C#, ASP.NET Core, SQL,
@@ -49,17 +49,17 @@ export default function About() {
                 documenting what I&rsquo;ve learned along the way.
               </p>
 
-              <p className="border-l-2 border-accent pl-5 font-display text-lg font-medium">
-                <span className="text-gradient">One step, one project, one problem at a time.</span>
+              <p className="!mt-8 border-l-2 border-primary pl-5 font-display text-lg font-medium tracking-[-0.01em] text-foreground">
+                One step, one project, one problem at a time.
               </p>
             </div>
 
-            <aside className="space-y-4">
+            <aside className="space-y-4 lg:sticky lg:top-[calc(var(--header-height)+2rem)] lg:self-start">
               <div
                 onPointerMove={trackPointer}
-                className="spotlight rounded-xl border border-border bg-card p-6 transition-colors duration-300 hover:border-primary/40"
+                className="spotlight card card-hover p-6"
               >
-                <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+                <p className="eyebrow text-muted-foreground">
                   Currently exploring
                 </p>
 
@@ -69,10 +69,7 @@ export default function About() {
 
                 <ul className="mt-4 flex flex-wrap gap-2">
                   {exploring.map((item) => (
-                    <li
-                      key={item}
-                      className="rounded-md border border-primary/30 bg-primary/10 px-2.5 py-1.5 font-mono text-xs text-primary"
-                    >
+                    <li key={item} className="chip chip-accent">
                       {item}
                     </li>
                   ))}
@@ -81,11 +78,9 @@ export default function About() {
 
               <div
                 onPointerMove={trackPointer}
-                className="spotlight relative overflow-hidden rounded-xl border border-accent/30 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 p-6"
+                className="spotlight card card-hover bg-secondary/60 p-6 shadow-none"
               >
-                <p className="font-mono text-xs uppercase tracking-widest text-accent">
-                  The goal
-                </p>
+                <p className="eyebrow">The goal</p>
 
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                   To become an engineer who understands not just how to build an

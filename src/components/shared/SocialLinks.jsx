@@ -47,10 +47,14 @@ export default function SocialLinks({ className = "", labelled = true }) {
             target={social.url.startsWith("mailto:") ? undefined : "_blank"}
             rel="noreferrer"
             aria-label={labelled ? undefined : social.name}
-            className="inline-flex items-center gap-2 font-mono text-sm text-muted-foreground transition-colors hover:text-primary"
+            className="group/social inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors duration-200 hover:text-foreground"
           >
-            {social.icon}
-            {labelled ? social.name : null}
+            <span className="inline-flex transition-colors duration-200 group-hover/social:text-primary">
+              {social.icon}
+            </span>
+            {labelled ? (
+              <span className="link-underline pb-px">{social.name}</span>
+            ) : null}
           </a>
         </li>
       ))}

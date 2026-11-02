@@ -21,30 +21,39 @@ const roles = [
 
 export default function Experience() {
   return (
-    <section id="experience" className="px-5 py-24">
-      <div className="mx-auto max-w-6xl">
+    <section id="experience" className="section-block section-divider">
+      <div className="container-page">
         <SectionHeading index="03" eyebrow="EXPERIENCE" title="Experience" />
 
-        <ol className="mt-12 space-y-6">
+        <ol className="mt-10 space-y-6 md:mt-12">
           {roles.map((role) => (
-            <Reveal as="li" key={`${role.title}-${role.company}`} className="relative pl-8 md:pl-10">
+            <Reveal
+              as="li"
+              key={`${role.title}-${role.company}`}
+              className="relative pl-7 md:pl-10"
+            >
               <span
                 aria-hidden="true"
-                className="absolute left-0 top-0 h-full w-px bg-gradient-to-b from-primary via-accent-2/60 to-transparent"
+                className="absolute left-[4px] top-0 h-full w-px bg-gradient-to-b from-primary/60 via-border to-transparent"
               />
               <span
                 aria-hidden="true"
-                className="absolute -left-[5px] top-7 h-[11px] w-[11px] rounded-full border-2 border-background bg-primary ring-4 ring-primary/15"
+                className="absolute left-0 top-8 h-[9px] w-[9px] rounded-full bg-primary ring-4 ring-background"
               />
 
               <article
                 onPointerMove={trackPointer}
-                className="spotlight rounded-xl border border-border bg-card p-6 transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-glow md:p-8">
-                <div className="flex flex-wrap items-start justify-between gap-3">
+                className="spotlight card card-hover p-6 md:p-8"
+              >
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                   <div>
-                    <h3 className="text-xl font-semibold">{role.title}</h3>
-                    <p className="mt-1.5 font-mono text-sm text-primary">
-                      {role.company}
+                    <h3 className="text-xl font-semibold tracking-[-0.015em] md:text-[1.375rem]">
+                      {role.title}
+                    </h3>
+                    <p className="mt-1.5 text-[0.9375rem]">
+                      <span className="font-medium text-primary">
+                        {role.company}
+                      </span>
                       <span className="text-muted-foreground">
                         {" "}
                         · {role.location}
@@ -53,27 +62,38 @@ export default function Experience() {
                   </div>
 
                   {role.current ? (
-                    <span className="inline-flex shrink-0 items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 font-mono text-xs text-primary">
-                      <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                    <span className="chip chip-accent shrink-0 gap-2 self-start rounded-full">
+                      <span className="relative flex h-1.5 w-1.5">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-50" />
+                        <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
+                      </span>
                       Current
                     </span>
                   ) : null}
                 </div>
 
-                <p className="mt-5 max-w-3xl leading-relaxed text-muted-foreground">
+                <p className="mt-6 max-w-3xl border-t border-border pt-6 text-[1.0625rem] leading-relaxed text-foreground/85">
                   {role.summary}
                 </p>
 
-                <ul className="mt-5 space-y-2.5">
+                <ul className="mt-5 grid gap-x-10 gap-y-3 md:grid-cols-2">
                   {role.highlights.map((highlight) => (
                     <li
                       key={highlight}
-                      className="flex gap-3 leading-relaxed text-muted-foreground"
+                      className="flex gap-3 text-[0.9375rem] leading-relaxed text-muted-foreground"
                     >
-                      <span
+                      <svg
                         aria-hidden="true"
-                        className="mt-[0.6rem] h-1.5 w-1.5 shrink-0 rounded-full bg-primary/60"
-                      />
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="mt-[0.3rem] h-3.5 w-3.5 shrink-0 text-primary"
+                      >
+                        <path d="m5 12 5 5L20 7" />
+                      </svg>
                       {highlight}
                     </li>
                   ))}

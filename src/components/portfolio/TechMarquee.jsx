@@ -18,7 +18,7 @@ export default function TechMarquee() {
   return (
     <div
       aria-label="Technologies"
-      className="marquee relative overflow-hidden border-y border-border/70 bg-card/50 py-5 [mask-image:linear-gradient(to_right,transparent,#000_10%,#000_90%,transparent)]"
+      className="marquee relative overflow-hidden border-y border-border bg-card/60 py-5 [mask-image:linear-gradient(to_right,transparent,#000_12%,#000_88%,transparent)] md:py-6"
     >
       {/* Rendered twice so the -50% loop is seamless; the copy is hidden from AT. */}
       <div className="marquee-track flex w-max">
@@ -31,10 +31,10 @@ export default function TechMarquee() {
             {stack.map((item) => (
               <li
                 key={item}
-                className="flex items-center gap-6 px-3 font-display text-lg font-medium text-muted-foreground transition-colors hover:text-primary md:text-xl"
+                className="flex items-center gap-7 px-3.5 font-display text-base font-medium tracking-[-0.01em] text-muted-foreground transition-colors duration-200 hover:text-foreground md:text-lg"
               >
                 {item}
-                <span aria-hidden="true" className="bg-aurora h-1.5 w-1.5 rounded-full" />
+                <span aria-hidden="true" className="h-1 w-1 rounded-full bg-primary/50" />
               </li>
             ))}
           </ul>

@@ -49,10 +49,11 @@ function useTypewriter(words) {
   return text;
 }
 
-const floatingBadges = [
-  { label: "C#", className: "-left-6 top-10 float-slow" },
-  { label: "React", className: "-right-5 top-1/3 float-slower" },
-  { label: "SQL", className: "-left-4 bottom-16 float-slower" },
+const orbitBadges = [
+  { label: "C#", angle: "20deg" },
+  { label: "React", angle: "110deg" },
+  { label: ".NET", angle: "200deg" },
+  { label: "SQL", angle: "290deg" },
 ];
 
 export default function Hero() {
@@ -86,33 +87,32 @@ export default function Hero() {
       id="home"
       ref={sectionRef}
       onPointerMove={moveGlow}
-      className="relative isolate overflow-hidden pt-28 pb-20 md:pt-36 md:pb-28"
+      className="relative isolate overflow-hidden pt-[calc(var(--header-height)+3.5rem)] pb-20 md:pt-[calc(var(--header-height)+5.5rem)] md:pb-28 lg:pb-32"
     >
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-        <div className="aurora-blob -left-24 -top-24 h-96 w-96 bg-[var(--site-blob-1)]" />
-        <div
-          className="aurora-blob right-[-6rem] top-24 h-[28rem] w-[28rem] bg-[var(--site-blob-2)]"
-          style={{ animationDelay: "-6s" }}
-        />
-        <div
-          className="aurora-blob bottom-[-8rem] left-1/3 h-80 w-80 bg-[var(--site-blob-3)]"
-          style={{ animationDelay: "-12s" }}
-        />
         <div className="hero-grid absolute inset-0" />
         <div
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(520px circle at var(--hx, 70%) var(--hy, 30%), var(--site-spotlight), transparent 70%)",
+              "radial-gradient(60rem 32rem at 85% -10%, var(--site-halo), transparent 70%)",
           }}
         />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(480px circle at var(--hx, 70%) var(--hy, 30%), var(--site-spotlight), transparent 70%)",
+          }}
+        />
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-background" />
       </div>
 
-      <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-5 md:grid-cols-[1.1fr_0.9fr] md:gap-16 lg:gap-20">
+      <div className="container-page relative grid items-center gap-14 md:grid-cols-[1.15fr_0.85fr] md:gap-12 lg:gap-20">
         <div className="order-2 max-w-2xl md:order-1">
-          <p className="hero-enter inline-flex items-center gap-3 rounded-full border border-primary/25 bg-card/70 px-4 py-2 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground shadow-sm backdrop-blur">
+          <p className="hero-enter inline-flex items-center gap-2.5 rounded-full border border-border bg-card/80 py-1.5 pl-3 pr-4 font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground shadow-soft backdrop-blur sm:text-xs">
             <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-60" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-50" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
             </span>
             Hello, I&rsquo;m Deeya Pandey
@@ -120,7 +120,7 @@ export default function Hero() {
 
           <h1
             aria-label=".NET Developer building practical web applications."
-            className="hero-enter-delay-1 mt-7 text-4xl font-semibold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl lg:text-[4.25rem]"
+            className="hero-enter-delay-1 mt-7 text-[2.5rem] font-semibold leading-[1.04] tracking-[-0.035em] sm:text-[3.25rem] md:text-[3.5rem] lg:text-[4.25rem]"
           >
             <span aria-hidden="true" className="block">
               .NET Developer building
@@ -130,23 +130,23 @@ export default function Hero() {
               <span className="invisible col-start-1 row-start-1">{longestPhrase}</span>
               <span className="col-start-1 row-start-1">
                 <span className="text-gradient">{typed}</span>
-                <span className="caret ml-1 inline-block h-[0.9em] w-[3px] translate-y-[0.1em] rounded-full bg-accent" />
+                <span className="caret ml-1 inline-block h-[0.85em] w-[3px] translate-y-[0.08em] rounded-full bg-primary" />
               </span>
             </span>
           </h1>
 
-          <p className="hero-enter-delay-2 mt-6 font-mono text-base text-primary md:text-lg">
-            <span className="mr-2 text-muted-foreground">&gt;</span>
+          <p className="hero-enter-delay-2 mt-7 inline-flex items-center gap-2 font-mono text-sm text-primary md:text-[0.9375rem]">
+            <span className="text-muted-foreground">&gt;</span>
             .NET · React · SQL Server
           </p>
 
-          <p className="hero-enter-delay-2 mt-5 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
+          <p className="hero-enter-delay-2 mt-4 max-w-[34rem] text-[1.0625rem] leading-[1.7] text-muted-foreground md:text-lg">
             I&rsquo;m a Junior .NET Developer from Nepal with hands-on experience
             building and maintaining web applications using .NET, React,
             Next.js, and SQL Server.
           </p>
 
-          <div className="hero-enter-delay-3 mt-8 flex flex-wrap gap-3">
+          <div className="hero-enter-delay-3 mt-9 flex flex-wrap gap-3">
             <Button href="#projects" variant="primary" className="group">
               View My Work
               <svg
@@ -157,7 +157,7 @@ export default function Hero() {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="h-4 w-4 transition group-hover:translate-x-0.5"
+                className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
               >
                 <path d="M5 12h14" />
                 <path d="m12 5 7 7-7 7" />
@@ -169,44 +169,64 @@ export default function Hero() {
             </Button>
           </div>
 
-          <SocialLinks className="hero-enter-delay-3 mt-8 border-t border-border pt-5" />
+          <SocialLinks className="hero-enter-delay-3 mt-10 border-t border-border pt-6" />
         </div>
 
         <div
           onPointerMove={tilt}
           onPointerLeave={resetTilt}
-          className="hero-enter-delay-2 order-1 mx-auto w-full max-w-[16rem] sm:max-w-[20rem] md:order-2 md:max-w-[23rem] lg:max-w-[24rem]"
+          className="hero-enter-delay-2 order-1 mx-auto w-full max-w-[15rem] sm:max-w-[19rem] md:order-2 md:max-w-[16.5rem] lg:max-w-[21rem] xl:max-w-[24rem]"
         >
           <div
             ref={cardRef}
-            className="relative transition-transform duration-300 ease-out [transform-style:preserve-3d]"
+            className="portrait relative aspect-[4/5] transition-transform duration-500 ease-out [transform-style:preserve-3d]"
           >
+            {/* Orbit ring sits deepest; chips counter-spin so labels stay upright. */}
             <div
               aria-hidden="true"
-              className="bg-aurora absolute -inset-[2px] rounded-[1.1rem] opacity-70 blur-[2px]"
-            />
-            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-gradient-to-b from-secondary to-card p-2 shadow-glow">
-              <div
-                aria-hidden="true"
-                className="absolute inset-x-6 bottom-0 top-1/4 rounded-full bg-[var(--site-blob-1)] blur-3xl"
-              />
-              <img
-                src={profileImage}
-                alt="Deeya Pandey"
-                fetchPriority="high"
-                className="relative h-full w-full object-contain object-bottom"
-              />
+              className="absolute left-1/2 top-[46%] aspect-square w-[116%] -translate-x-1/2 md:w-[106%] lg:w-[116%] -translate-y-1/2 [transform:translateZ(-40px)]"
+            >
+              <div className="orbit absolute inset-0 rounded-full border border-dashed border-border-strong">
+                {orbitBadges.map((badge) => (
+                  <span
+                    key={badge.label}
+                    className="absolute inset-0"
+                    style={{ transform: `rotate(${badge.angle})` }}
+                  >
+                    <span
+                      className="absolute left-1/2 top-0"
+                      style={{ transform: `translate(-50%, -50%) rotate(-${badge.angle})` }}
+                    >
+                      <span className="orbit-chip block rounded-md border border-border bg-card px-2 py-0.5 font-mono text-[10px] font-medium text-muted-foreground shadow-soft sm:text-[11px]">
+                        <span className="text-primary">#</span> {badge.label}
+                      </span>
+                    </span>
+                  </span>
+                ))}
+              </div>
             </div>
 
-            {floatingBadges.map((badge) => (
-              <span
-                key={badge.label}
-                aria-hidden="true"
-                className={`absolute hidden rounded-lg border border-border bg-card/90 px-3 py-1.5 font-mono text-xs font-semibold text-foreground shadow-lg backdrop-blur sm:block ${badge.className}`}
-              >
-                <span className="text-primary">#</span> {badge.label}
-              </span>
-            ))}
+            <img
+              src={profileImage}
+              alt="Deeya Pandey"
+              fetchPriority="high"
+              className="portrait-cutout absolute inset-0 h-full w-full object-contain object-bottom [transform:translateZ(30px)]"
+            />
+
+            <div
+              aria-hidden="true"
+              className="absolute -bottom-6 -left-3 w-40 rounded-xl border border-border bg-card/95 p-3 font-mono text-[10.5px] leading-relaxed shadow-glow backdrop-blur sm:-left-8 sm:w-48 sm:text-[11.5px] [transform:translateZ(60px)]"
+            >
+              <div className="mb-2 flex gap-1.5">
+                <span className="h-2 w-2 rounded-full bg-border-strong" />
+                <span className="h-2 w-2 rounded-full bg-border-strong" />
+                <span className="h-2 w-2 rounded-full bg-border-strong" />
+              </div>
+              <p className="text-muted-foreground">
+                <span className="text-primary">$</span> whoami
+              </p>
+              <p className="text-foreground">deeya &middot; Kathmandu</p>
+            </div>
           </div>
         </div>
       </div>
@@ -216,8 +236,8 @@ export default function Hero() {
         aria-label="Scroll to About"
         className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 md:block"
       >
-        <span className="flex h-10 w-6 justify-center rounded-full border-2 border-border pt-2 transition-colors hover:border-primary">
-          <span className="h-2 w-1 animate-bounce rounded-full bg-primary" />
+        <span className="flex h-9 w-[22px] justify-center rounded-full border border-border-strong pt-2 transition-colors duration-200 hover:border-primary">
+          <span className="h-1.5 w-[3px] animate-bounce rounded-full bg-primary" />
         </span>
       </a>
     </section>

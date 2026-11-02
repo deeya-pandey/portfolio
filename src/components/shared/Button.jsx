@@ -1,13 +1,13 @@
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-medium transition duration-300 disabled:pointer-events-none disabled:opacity-60";
+  "inline-flex h-11 items-center justify-center gap-2 rounded-[0.625rem] px-5 text-sm font-medium tracking-[-0.005em] transition-[background-color,border-color,color,box-shadow,transform] duration-200 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-60";
 
 const variants = {
   primary:
-    "bg-primary text-primary-foreground shadow-lg shadow-primary/20 hover:-translate-y-0.5 hover:bg-primary-strong hover:shadow-xl hover:shadow-primary/30",
+    "bg-primary text-primary-foreground shadow-[inset_0_1px_0_rgb(255_255_255/0.18),0_1px_2px_rgb(0_0_0/0.12)] hover:bg-primary-strong hover:shadow-[inset_0_1px_0_rgb(255_255_255/0.18),0_8px_20px_-8px_var(--site-primary)]",
   outline:
-    "border border-border bg-card/70 text-foreground hover:-translate-y-0.5 hover:border-primary hover:text-primary",
+    "border border-border bg-card text-foreground shadow-soft hover:border-border-strong hover:bg-secondary",
   ghost:
-    "border border-primary/50 text-primary hover:-translate-y-0.5 hover:bg-primary hover:text-primary-foreground hover:shadow-glow",
+    "border border-primary/35 text-primary hover:border-primary/60 hover:bg-primary/[0.07]",
 };
 
 export default function Button({

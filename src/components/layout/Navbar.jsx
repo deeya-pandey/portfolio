@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const links = [
   ["Home", "home"],
@@ -22,9 +22,23 @@ export default function Navbar() {
   const [hasScrolled, setHasScrolled] = useState(false);
   const [progress, setProgress] = useState(0);
 
+  const isFirstThemeRender = useRef(true);
+
   useEffect(() => {
-    document.documentElement.classList.toggle("dark", isDark);
+    const root = document.documentElement;
+    let timer;
+
+    // Cross-fade colours on a user toggle, but never on the first paint.
+    if (!isFirstThemeRender.current) {
+      root.classList.add("theme-transition");
+      timer = window.setTimeout(() => root.classList.remove("theme-transition"), 400);
+    }
+    isFirstThemeRender.current = false;
+
+    root.classList.toggle("dark", isDark);
     window.localStorage.setItem("theme", isDark ? "dark" : "light");
+
+    return () => window.clearTimeout(timer);
   }, [isDark]);
 
   // Highlight the section currently in view.
@@ -80,31 +94,31 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color,backdrop-filter] duration-300 ${
         hasScrolled || isMenuOpen
-          ? "border-b border-border/70 bg-background/85 backdrop-blur-md"
-          : "border-b border-transparent bg-background/40 backdrop-blur-sm"
+          ? "border-border/80 bg-background/80 backdrop-blur-xl backdrop-saturate-150"
+          : "border-transparent bg-transparent"
       }`}
     >
       <span
         aria-hidden="true"
-        className="bg-aurora absolute bottom-0 left-0 h-0.5 origin-left"
-        style={{ width: "100%", transform: `scaleX(${progress})` }}
+        className="absolute bottom-[-1px] left-0 h-px w-full origin-left bg-primary/70"
+        style={{ transform: `scaleX(${progress})` }}
       />
 
       <nav
         aria-label="Primary"
-        className="mx-auto flex h-[var(--header-height)] max-w-6xl items-center justify-between px-5"
+        className="container-page flex h-[var(--header-height)] items-center justify-between"
       >
         <a
           href="#home"
-          className="font-mono text-lg font-semibold text-primary transition-opacity hover:opacity-80"
+          className="font-mono text-base font-semibold tracking-tight text-primary transition-opacity duration-200 hover:opacity-75"
         >
           &lt;DP /&gt;
         </a>
 
-        <div className="flex items-center gap-2 md:gap-6">
-          <ul className="hidden items-center gap-6 md:flex">
+        <div className="flex items-center gap-2 md:gap-3">
+          <ul className="hidden items-center gap-0.5 md:flex lg:gap-1">
             {links.map(([name, id]) => {
               const isActive = activeSection === id;
 
@@ -113,17 +127,17 @@ export default function Navbar() {
                   <a
                     href={`#${id}`}
                     aria-current={isActive ? "true" : undefined}
-                    className={`relative py-1 font-mono text-sm transition-colors ${
+                    className={`relative block rounded-lg px-3 py-1.5 text-sm font-medium transition-colors duration-200 ${
                       isActive
-                        ? "text-primary"
-                        : "text-muted-foreground hover:text-primary"
+                        ? "bg-secondary text-foreground"
+                        : "text-muted-foreground hover:text-foreground"
                     }`}
                   >
                     {name}
                     <span
                       aria-hidden="true"
-                      className={`absolute -bottom-0.5 left-0 h-px bg-primary transition-all duration-300 ${
-                        isActive ? "w-full" : "w-0"
+                      className={`absolute bottom-1 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-primary transition-[opacity,transform] duration-300 ${
+                        isActive ? "opacity-100" : "scale-0 opacity-0"
                       }`}
                     />
                   </a>
@@ -132,13 +146,15 @@ export default function Navbar() {
             })}
           </ul>
 
+          <span aria-hidden="true" className="mx-1 hidden h-5 w-px bg-border md:block" />
+
           <button
             type="button"
             onClick={() => setIsDark((current) => !current)}
             aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
             title={`Switch to ${isDark ? "light" : "dark"} mode`}
             aria-pressed={isDark}
-            className="grid h-10 w-10 place-items-center rounded-lg border border-border bg-card text-foreground transition hover:border-primary hover:text-primary"
+            className="icon-button"
           >
             <svg
               aria-hidden="true"
@@ -148,7 +164,7 @@ export default function Navbar() {
               strokeWidth="1.8"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="h-5 w-5"
+              className="h-[18px] w-[18px]"
             >
               {isDark ? (
                 <>
@@ -167,7 +183,7 @@ export default function Navbar() {
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMenuOpen}
             aria-controls="mobile-menu"
-            className="grid h-10 w-10 place-items-center rounded-lg border border-border bg-card text-foreground transition hover:border-primary hover:text-primary md:hidden"
+            className="icon-button md:hidden"
           >
             <svg
               aria-hidden="true"
@@ -176,7 +192,7 @@ export default function Navbar() {
               stroke="currentColor"
               strokeWidth="1.8"
               strokeLinecap="round"
-              className="h-5 w-5"
+              className="h-[18px] w-[18px]"
             >
               {isMenuOpen ? (
                 <path d="M6 6l12 12M18 6 6 18" />
@@ -191,22 +207,30 @@ export default function Navbar() {
       <div
         id="mobile-menu"
         hidden={!isMenuOpen}
-        className="border-t border-border/70 bg-background/95 backdrop-blur-md md:hidden"
+        className="menu-in border-t border-border/70 md:hidden"
       >
-        <ul className="mx-auto max-w-6xl px-5 py-3">
+        <ul className="container-page py-3">
           {links.map(([name, id]) => (
             <li key={name}>
               <a
                 href={`#${id}`}
                 onClick={() => setIsMenuOpen(false)}
                 aria-current={activeSection === id ? "true" : undefined}
-                className={`flex items-center justify-between border-b border-border/50 py-3 font-mono text-sm transition-colors last:border-b-0 ${
+                className={`flex items-center justify-between rounded-lg px-3 py-3 text-[0.9375rem] font-medium transition-colors duration-200 ${
                   activeSection === id
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-primary"
+                    ? "bg-secondary text-foreground"
+                    : "text-muted-foreground hover:text-foreground"
                 }`}
               >
-                {name}
+                <span className="flex items-center gap-3">
+                  <span
+                    aria-hidden="true"
+                    className={`h-1 w-1 rounded-full ${
+                      activeSection === id ? "bg-primary" : "bg-border-strong"
+                    }`}
+                  />
+                  {name}
+                </span>
                 <span aria-hidden="true" className="text-xs opacity-60">
                   &rarr;
                 </span>
